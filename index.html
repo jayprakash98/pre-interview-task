@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Splide Slider Example</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+
+    <style>
+      .navbar {
+        display: flex;
+        align-items: center; /* Vertically center the items */
+        padding: 10px 20px; /* Adjust padding */
+      }
+
+      .logo img {
+        margin-left: 37px;
+        height: 40px; /* Set the height of the logo */
+      }
+
+      .nav-links {
+        list-style: none;
+        margin-right: 86px;
+        padding: 0;
+        margin-left: 800px;
+      }
+
+      .nav-links li {
+        display: inline;
+        font-weight: bold;
+        color: black;
+      }
+
+      .nav-links li a {
+        color: black;
+        margin-right: 60px;
+        text-decoration: none;
+      }
+
+      .nav-links li a:hover {
+        background-color: #555; /* Change background color on hover */
+        border-radius: 5px; /* Add rounded corners */
+      }
+
+      .sign-up-btn {
+        background-color: black;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 17px;
+        text-decoration: none;
+      }
+
+      .sign-up-btn:hover {
+        background-color: #333;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        margin-top: 80px;
+      }
+
+      .left-section {
+        flex: 1;
+        padding: 20px;
+        color: #fff; /* Default text color for left section */
+        margin-left: 72px;
+      }
+
+      .left-section h1 {
+        font-family: "Sofia Sans", sans-serif;
+        font-size: 40px;
+        font-weight: 900;
+        text-align: left;
+        margin: 0; /* Remove default margin */
+      }
+
+      .left-section h3 {
+        font-family: "Sofia Sans", sans-serif;
+        font-size: 28px;
+        font-weight: 400;
+        text-align: left;
+        font-weight: bold;
+        margin: 0; /* Remove default margin */
+      }
+
+      .left-section h3 span.before-comma {
+        color: #fff; /* Set color for text before comma */
+      }
+
+      .left-section h3 span.after-comma {
+        color: #000; /* Set color for text after comma */
+      }
+
+      .left-section p {
+        font-family: "Poppins", sans-serif;
+        width: 85%;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 45.6px;
+        text-align: left;
+        margin-top: 40px;
+        color: black;
+      }
+
+      .left-section .price {
+        font-family: "Poppins", sans-serif;
+        font-size: 30px;
+        font-weight: 600;
+        line-height: 45.6px;
+        text-align: left;
+        margin-top: 20px;
+        color: white;
+        letter-spacing: 1px;
+      }
+
+      .right-section {
+        flex: 1;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .splide__arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 1000;
+        color: red; /* Change arrow color here */
+      }
+
+      .splide__arrow--prev {
+        left: 116px;
+      }
+
+      .splide__arrow--next {
+        right: 116px;
+      }
+
+      .splide__slide img {
+        max-width: 37%; /* Set maximum width to 100% */
+        height: auto; /* Maintain aspect ratio */
+      }
+
+      .social-icons {
+        margin-top: 35px;
+      }
+
+      .social-icons a {
+        display: inline-block;
+        margin-right: 10px;
+        color: white;
+        background-color: transparent;
+        border: 1px solid white;
+        border-radius: 50%;
+        width: 30px; /* Adjust the width and height to make the icons smaller */
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        font-size: 16px; /* Adjust the font size to make the icons smaller */
+        transition: background-color 0.3s ease;
+      }
+
+      .social-icons a:hover {
+        background-color: white;
+        color: black;
+      }
+      @media only screen and (max-width: 768px) {
+        .navbar {
+          flex-direction: column; /* Stack items vertically */
+          align-items: flex-start; /* Align items to the start */
+          padding: 10px; /* Reduce padding */
+        }
+
+        .logo img {
+          margin-left: 0; /* Reset margin */
+          margin-bottom: 10px; /* Add space below logo */
+        }
+
+        .nav-links {
+          margin: 0;
+          margin-top: 20px; /* Add space above navigation links */
+          margin-bottom: 20px; /* Add space below navigation links */
+          padding: 0;
+          text-align: center; /* Center align navigation links */
+        }
+
+        .nav-links li {
+          display: block; /* Display links as block elements */
+          margin-bottom: 10px; /* Add space between links */
+        }
+
+        .nav-links li a {
+          margin-right: 0; /* Remove right margin */
+        }
+
+        .right-section,
+        .left-section {
+          margin: 0 auto; /* Center align content */
+          text-align: center; /* Center align text */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="image/Logo.png" alt="Logo" />
+      </div>
+      <ul class="nav-links">
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">Brands</a></li>
+        <li><a href="#">Contact us</a></li>
+        <a class="sign-up-btn" href="https://facebook.com">Sign up</a>
+      </ul>
+    </nav>
+    <div class="container">
+      <div class="left-section">
+        <h1 id="title">Exquisite Watches</h1>
+        <h3 id="subtitle">
+          <span class="before-comma">Gold Luxury</span>,
+          <span class="after-comma">Choose Us</span>
+        </h3>
+        <p id="description">
+          Discover the Perfect Watch for Every Occasion and Elevate Your Style
+          with Timeless Elegance and Precision Craftsmanship - watch
+        </p>
+        <div class="price" id="price">$499.00</div>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="right-section">
+        <div class="splide" id="splide">
+          <div class="splide__track">
+            <ul class="splide__list">
+              <li class="splide__slide">
+                <img src="image/Group 4.png" alt="Image 1" />
+              </li>
+              <li class="splide__slide">
+                <img src="image/Group 5.png" alt="Image 2" />
+              </li>
+              <li class="splide__slide">
+                <img src="image/Group 6.png" alt="Image 3" />
+              </li>
+              <li class="splide__slide">
+                <img src="image/Group 7.png" alt="Image 3" />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        new Splide("#splide", {
+          type: "fade",
+          rewind: true,
+          pagination: false,
+          arrows: true,
+        }).mount();
+
+        const title = document.getElementById("title");
+        const titles = [
+          "Exquisite Watches",
+          "Dainty Timepieces",
+          "Elegant Timepieces",
+          "Refined Timepieces",
+        ];
+        const beforeCommas = [
+          "Gold Luxury",
+          "silver Luxury",
+          "Choose Luxury",
+          "Choose Luxury",
+        ];
+        const afterCommas = [
+          "Choose Us",
+          "Choose Us",
+          "Choose Us",
+          "Choose Us",
+        ];
+        const descriptions = [
+          "Discover the Perfect Watch for Every Occasion and Elevate Your Style with Timeless Elegance and Precision Craftsmanship - watch",
+          "Discover the Latest Trends in Timepieces and Make a Statement with Our Elegant Collections - watch",
+          "Discover the Perfect Watch for Every Occasion and Elevate Your Style with Timeless Elegance and Precision Craftsmanship - watch",
+          "Explore the Ideal Timepiece for Any Moment and Enhance Your Style with Timeless Sophistication and Impeccable Craftsmanship - timepiece",
+        ];
+        const prices = ["$499.00", "$469.00", "$529.00", "$599.00"];
+        let currentIndex = 0;
+
+        document
+          .querySelector(".splide__arrow--prev")
+          .addEventListener("click", function () {
+            currentIndex = (currentIndex - 1 + titles.length) % titles.length;
+            updateContent();
+          });
+
+        document
+          .querySelector(".splide__arrow--next")
+          .addEventListener("click", function () {
+            currentIndex = (currentIndex + 1) % titles.length;
+            updateContent();
+          });
+
+        function updateContent() {
+          if (currentIndex === 0) {
+            document.body.style.background =
+              "linear-gradient(90deg, rgba(244,167,100,1) 0%, rgba(255,222,194,1) 100%)";
+          } else if (currentIndex === 1) {
+            document.body.style.background =
+              "linear-gradient(90deg, rgba(173,176,176,1) 0%, rgba(225,225,225,1) 100%)";
+          } else if (currentIndex === 2) {
+            document.body.style.background =
+              "linear-gradient(90deg, rgba(48,163,87,1) 0%, rgba(117,227,154,1) 100%)";
+          } else {
+            document.body.style.background =
+              "linear-gradient(90deg, rgba(242,79,79,1) 0%, rgba(255,168,149,1) 100%)";
+          }
+          title.textContent = titles[currentIndex];
+          document.querySelector(".before-comma").textContent =
+            beforeCommas[currentIndex];
+          document.querySelector(".after-comma").textContent =
+            afterCommas[currentIndex];
+          document.getElementById("description").textContent =
+            descriptions[currentIndex];
+          document.getElementById("price").textContent = prices[currentIndex];
+        }
+
+        updateContent();
+      });
+    </script>
+  </body>
+</html>
